@@ -137,7 +137,7 @@ const UsersManagementPage = () => {
     });
   };
 
-  // Get status color
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'bg-green-100 text-green-800';
