@@ -444,7 +444,7 @@ export default function SelfMeasurementForm() {
                                   )}
                                 </div>
 
-                                {/* Measurements Grid */}
+                                
                                 <FieldArray name={`bodySections.${sectionIndex}.measurements`}>
                                   {({ push: pushMeasurement, remove: removeMeasurement }) => (
                                     <div className="space-y-4">
