@@ -1,6 +1,9 @@
+
+
+
 "use client";
 
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 
 const Audience: React.FC = () => {
   const targetAudience = [
@@ -48,8 +51,6 @@ const Audience: React.FC = () => {
     },
   ];
 
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <section
       className="bg-white"
@@ -58,90 +59,11 @@ const Audience: React.FC = () => {
     >
       {/* ---------- DESKTOP: unchanged ---------- */}
       <div className="hidden lg:block py-20" style={{ marginBottom: "200px" }}>
-        <div
-          className="mx-auto px-4 md:px-20"
-          style={{
-            maxWidth: "1440px",
-            width: "100%",
-          }}
-        >
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-monument">
-              Who is it for
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto font-manrope">
-              Whether you design, build, or create, we help you measure smarter.
-            </p>
-          </div>
-
-          {/* Image Row - All 6 images in one row */}
-          <div className="flex overflow-hidden" style={{ 
-            maxWidth: "1281px",
-            minHeight: "622px",
-            margin: "0 auto",
-            height: "700px", 
-            position: "relative",
-          }}>
-            {targetAudience.map((person, index) => (
-              <div
-                key={person.id}
-                className="group relative rounded-[20px] overflow-hidden flex-shrink-0"
-                style={{
-                  width: hoveredIndex === index ? "350px" : "230px", // Increased width to better fill the container
-                  height: "650px", // Increased height
-                  borderRadius: "20px",
-                  backgroundColor: person.bgColor,
-                  transition: "all 0.3s ease",
-                  position: "relative",
-                  zIndex: hoveredIndex === index ? "10" : "1",
-                  marginRight: "-30px", // Reduced overlap
-                  overflow: "hidden",
-                  top: "40px", // Adjusted vertical position",
-                  boxShadow: hoveredIndex === index ? "0 20px 40px rgba(0,0,0,0.2)" : "none",
-                }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={person.image}
-                  alt={person.title}
-                  className="w-full h-full object-cover"
-                  style={{ objectFit: "cover" }}
-                />
-
-                {/* Overlay title */}
-                <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center"
-                  style={{
-                    height: "102px",
-                  }}>
-                  <p
-                    className="text-center whitespace-pre-line font-manrope text-white"
-                    style={{
-                      fontFamily: "Manrope, sans-serif",
-                      fontWeight: 400,
-                      fontSize: "24px",
-                      lineHeight: "100%",
-                      textAlign: "center",
-                      color: "#FFFFFFB2",
-                      width: "100%",
-                      height: "66px",
-                      margin: "0 auto",
-                    }}
-                  >
-                    {person.title}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </div>
 
-      {/* ---------- MOBILE: fixed header + horizontal scroll ---------- */}
       <div className="lg:hidden" style={{ paddingTop: 20, paddingBottom: 40 }}>
-        {/* Header (width 298 x 89) — placed above scroll and given high z-index */}
+      
         <div
           className="mx-auto"
           style={{
@@ -154,7 +76,7 @@ const Audience: React.FC = () => {
             justifyContent: "center",
             marginTop: 8,
             position: "relative",
-            zIndex: 20, // <-- ensures header sits above the image row
+            zIndex: 20, 
             background: "transparent",
           }}
         >
@@ -215,8 +137,9 @@ const Audience: React.FC = () => {
             }}
           >
             {targetAudience.map((person, idx) => {
-              // All cards are now 197px wide per spec
-              const cardWidth = 197;
+              // first card is wider (351) per spec
+              const isFirst = idx === 0;
+              const cardWidth = isFirst ? 351 : 197;
               return (
                 <div
                   key={person.id}
@@ -242,7 +165,6 @@ const Audience: React.FC = () => {
                     style={{
                       height: 102,
                       pointerEvents: "none",
-                      top: 317,
                     }}
                   >
                     <p
@@ -250,12 +172,14 @@ const Audience: React.FC = () => {
                       style={{
                         fontFamily: "Manrope, sans-serif",
                         fontWeight: 400,
-                        fontSize: 18,
+                        fontSize: 24,
                         lineHeight: "100%",
                         textAlign: "center",
                         color: "#FFFFFFB2",
-                        width: 197,
+                        width: isFirst ? "140px" : "100px",
                         height: 66,
+                        position: "relative",
+                        top: 18,
                         margin: "0 auto",
                         display: "block",
                       }}

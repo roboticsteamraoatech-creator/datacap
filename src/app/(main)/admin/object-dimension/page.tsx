@@ -5,7 +5,7 @@ import { MoreVertical } from 'lucide-react';
 import ActionModal from '@/app/components/ActionModal';
 import { MeasurementTopNav } from '@/app/components/MeasurementTopNav';
 
-// Mock data for object dimensions
+
 const mockObjects = [
   {
     id: '1',
@@ -85,7 +85,7 @@ const AdminObjectDimensionPage = () => {
   const handleEdit = () => {
     if (selectedObject) {
       console.log('Edit object:', selectedObject.id);
-      // Implement edit functionality
+      
     }
   };
 
@@ -97,7 +97,7 @@ const AdminObjectDimensionPage = () => {
     setIsModalOpen(false);
   };
 
-  // Mock data for current measurement (for the top nav)
+  
   const currentMeasurement = {
     chest: '88 cm',
     waist: '75 cm',
@@ -112,7 +112,7 @@ const AdminObjectDimensionPage = () => {
         .manrope { font-family: 'Manrope', sans-serif; }
       `}</style>
 
-      {/* Measurement Top Nav */}
+     
       <MeasurementTopNav 
         title="Current object dimensions"
         measurements={currentMeasurement}

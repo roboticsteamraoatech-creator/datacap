@@ -110,8 +110,6 @@ function VerifyEmailContent() {
     mutationFn: async (email: string) => {
       const payload = { email };
       
-      console.log('🚀 Sending RESEND OTP request to backend:', payload);
-      
       const { data } = await client.post("/api/auth/resend-otp", payload);
       return data;
     },
@@ -368,20 +366,12 @@ function VerifyEmailContent() {
         {/* Header */}
         <div className="mb-8">
           <h1 
-            className="monument-extended text-2xl font-normal text-[#1A1A1A] mb-4"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              whiteSpace: "nowrap"
-            }}
+            className="monument-extended text-2xl font-normal text-[#1A1A1A] mb-3"
           >
             Verify Your Email
           </h1>
           <p 
             className="manrope text-sm font-light text-[#9CA3AF]"
-            style={{
-              marginTop: "16px"
-            }}
           >
             Enter the 6-digit code sent to your email
           </p>
@@ -535,13 +525,10 @@ function VerifyEmailContent() {
                   fontWeight: 400,
                   lineHeight: "100%",
                   color: "#1A1A1A",
-                  minWidth: "317px",
+                  width: "317px",
                   height: "36px",
                   margin: 0,
-                  marginBottom: "16px",
-                  display: "flex",
-                  alignItems: "center",
-                  whiteSpace: "nowrap"
+                  marginBottom: "16px"
                 }}
               >
                 Verify Your Email
@@ -555,7 +542,7 @@ function VerifyEmailContent() {
                   color: "#6E6E6EB2",
                   width: "501px",
                   height: "25px",
-                  margin: "16px 0 0 0"
+                  margin: 0
                 }}
               >
                 Enter the 6-digit code sent to your email
@@ -767,13 +754,13 @@ function VerifyEmailContent() {
   );
 }
 
-// Fallback component for Suspense
-function VerifyEmailFallback() {
+// Loading component for Suspense fallback
+function VerifyEmailLoading() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center">
       <div className="text-center">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-500 mb-4"></div>
-        <p className="text-gray-600">Loading...</p>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-700 mx-auto"></div>
+        <p className="mt-4 text-gray-600">Loading verification page...</p>
       </div>
     </div>
   );
@@ -782,7 +769,7 @@ function VerifyEmailFallback() {
 // Main page component that wraps the content in Suspense
 export default function VerifyEmailPage() {
   return (
-    <Suspense fallback={<VerifyEmailFallback />}>
+    <Suspense fallback={<VerifyEmailLoading />}>
       <VerifyEmailContent />
     </Suspense>
   );

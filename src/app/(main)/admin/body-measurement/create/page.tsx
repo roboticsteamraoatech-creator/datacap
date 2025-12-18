@@ -9,7 +9,7 @@ const AdminBodyMeasurementCreatePage = () => {
         <h1 className="text-3xl font-bold text-gray-900">Create Body Measurement</h1>
         <p className="text-gray-600 mt-2">Create a new body measurement record for a user</p>
       </div>
-      
+    
       <div className="bg-white rounded-lg shadow-sm p-8">
         <form className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
