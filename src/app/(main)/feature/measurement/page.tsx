@@ -15,17 +15,17 @@ const Measurement = () => {
       setIsMobile(window.innerWidth < 1280);
     };
     
-    // Initial check
+   
     checkMobile();
     
-    // Add event listener
+   
     window.addEventListener("resize", checkMobile);
     
-    // Cleanup
+    
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Don't render on server to avoid hydration mismatch
+  
   if (!isMounted) {
     return null;
   }
