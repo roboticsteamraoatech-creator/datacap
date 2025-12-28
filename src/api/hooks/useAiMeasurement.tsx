@@ -89,7 +89,7 @@ export const useAiMeasurement = () => {
       reader.readAsDataURL(file);
       reader.onload = () => {
         if (typeof reader.result === 'string') {
-          // Remove the data URL prefix (e.g., "data:image/jpeg;base64,")
+          // Removed the data URL prefix (e.g., "data:image/jpeg;base64,")
           const base64String = reader.result.split(',')[1];
           resolve(base64String);
         } else {
